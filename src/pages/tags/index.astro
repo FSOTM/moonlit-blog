@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllTags, getPublishedPosts } from '../../lib/posts';
+import { sitePath } from '../../lib/urls';
+
+const posts = await getPublishedPosts();
+const tags = getAllTags(posts);
+---
+
+<BaseLayout title="标签" description="按主题浏览月背来信的文章。">
+  <section class="tags shell">
+    <header>
+      <p>TOPIC MAP</p>
+      <h1>标签</h1>
+    </header>
+
+    <div class="tag-grid">
+      {
+        tags.map((tag, index) => (
+          <a href={sitePath(`tags/${encodeURIComponent(tag.name)}/`)}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>#{tag.name}</strong>
+            <small>{tag.count} 篇</small>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tags {
+    padding-top: clamp(4rem, 9vw, 8rem);
+  }
+
+  header p {
+    margin: 0;
+    color: var(--accent);
+    font: 500 0.66rem/1.4 var(--font-utility);
+    letter-spacing: 0.14em;
+  }
+
+  header h1 {
+    margin: 1rem 0 clamp(3rem, 7vw, 6rem);
+    font: 500 clamp(3.5rem, 8vw, 7rem)/1 var(--font-display);
+    letter-spacing: -0.05em;
+  }
+
+  .tag-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .tag-grid a {
+    display: grid;
+    min-height: 12rem;
+    padding: 1.5rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    text-decoration: none;
+    transition: background 180ms ease;
+  }
+
+  .tag-grid a:hover {
+    background: var(--surface-raised);
+  }
+
+  .tag-grid span,
+  .tag-grid small {
+    color: var(--text-faint);
+    font: 500 0.66rem/1.4 var(--font-utility);
+  }
+
+  .tag-grid strong {
+    align-self: center;
+    font: 500 clamp(1.35rem, 3vw, 2.2rem)/1.2 var(--font-display);
+  }
+
+  .tag-grid small {
+    align-self: end;
+  }
+
+  @media (max-width: 760px) {
+    .tag-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tag-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

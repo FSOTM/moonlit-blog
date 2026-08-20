@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getAllTags, getPublishedPosts } from '../../lib/posts';
+import { sitePath } from '../../lib/urls';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return getAllTags(posts).map(({ name }) => ({
+    params: { tag: name },
+    props: { tag: name, posts: posts.filter((post) => post.data.tags.includes(name)) },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`} description={`标记为“${tag}”的文章。`}>
+  <section class="tag-page shell">
+    <header>
+      <p>TOPIC</p>
+      <h1>#{tag}</h1>
+      <div><span>{posts.length} 篇文章</span><a href={sitePath('tags/')}>全部标签</a></div>
+    </header>
+    <PostList posts={posts} />
+  </section>
+</BaseLayout>
+
+<style>
+  .tag-page {
+    padding-top: clamp(4rem, 9vw, 8rem);
+  }
+
+  header {
+    margin-bottom: clamp(3rem, 7vw, 6rem);
+  }
+
+  header > p {
+    margin: 0;
+    color: var(--accent);
+    font: 500 0.66rem/1.4 var(--font-utility);
+    letter-spacing: 0.14em;
+  }
+
+  h1 {
+    margin: 1rem 0 2rem;
+    font: 500 clamp(3.2rem, 8vw, 7rem)/1 var(--font-display);
+    letter-spacing: -0.05em;
+  }
+
+  header div {
+    display: flex;
+    gap: 2rem;
+    color: var(--text-faint);
+    font: 500 0.7rem/1.4 var(--font-utility);
+  }
+
+  header a {
+    color: var(--text-soft);
+    text-underline-offset: 0.3em;
+  }
+</style>

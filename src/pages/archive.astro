@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+const byYear = Map.groupBy(posts, (post) => post.data.published.getFullYear());
+---
+
+<BaseLayout title="归档" description="按年份浏览月背来信的全部文章。">
+  <section class="page shell">
+    <header class="page__header">
+      <p>ALL TRANSMISSIONS</p>
+      <h1>归档</h1>
+      <span>共 {posts.length} 篇文章</span>
+    </header>
+
+    {
+      [...byYear.entries()].map(([year, yearPosts]) => (
+        <section class="year" aria-labelledby={`year-${year}`}>
+          <h2 id={`year-${year}`}>{year}</h2>
+          <PostList posts={yearPosts} showYear />
+        </section>
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-top: clamp(4rem, 9vw, 8rem);
+  }
+
+  .page__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    margin-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  .page__header p {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--accent);
+    font: 500 0.66rem/1.4 var(--font-utility);
+    letter-spacing: 0.14em;
+  }
+
+  .page__header h1 {
+    margin: 1rem 0 0;
+    font: 500 clamp(3.5rem, 8vw, 7rem)/1 var(--font-display);
+    letter-spacing: -0.05em;
+  }
+
+  .page__header span {
+    color: var(--text-faint);
+    font: 500 0.7rem/1.4 var(--font-utility);
+  }
+
+  .year {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    margin-bottom: 5rem;
+  }
+
+  .year h2 {
+    margin: 0;
+    color: var(--text-faint);
+    font: 500 1rem/1.4 var(--font-utility);
+  }
+
+  @media (max-width: 680px) {
+    .year {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sitePath } from '../lib/urls';
+---
+
+<BaseLayout title="页面未找到">
+  <section class="not-found shell">
+    <span>404 / SIGNAL LOST</span>
+    <h1>这封信没有抵达。</h1>
+    <p>地址可能已经改变，也可能从未存在。</p>
+    <a href={sitePath('')}>返回首页</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 65svh;
+    align-content: center;
+    justify-items: start;
+  }
+
+  span {
+    color: var(--accent);
+    font: 500 0.68rem/1.4 var(--font-utility);
+    letter-spacing: 0.14em;
+  }
+
+  h1 {
+    margin: 1rem 0;
+    font: 500 clamp(3rem, 8vw, 7rem)/1.05 var(--font-display);
+    letter-spacing: -0.05em;
+  }
+
+  p {
+    color: var(--text-soft);
+  }
+
+  a {
+    margin-top: 2rem;
+    color: var(--text);
+    text-underline-offset: 0.35em;
+  }
+</style>

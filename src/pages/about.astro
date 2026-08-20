@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site';
+---
+
+<BaseLayout title="关于" description={`关于${SITE.title}和作者${SITE.author}。`}>
+  <section class="about shell">
+    <header>
+      <p>ABOUT THIS SITE</p>
+      <h1>月背没有信号，<br />所以更适合慢慢写。</h1>
+    </header>
+
+    <div class="about__grid">
+      <aside>
+        <span>作者</span>
+        <strong>{SITE.author}</strong>
+        <i aria-hidden="true"></i>
+      </aside>
+      <article class="prose">
+        <p>{SITE.title}是一处个人写作空间，记录技术、系统与真实实践中的判断、失败和有效方法。</p>
+        <h2>这里写什么</h2>
+        <p>主要内容包括系统诊断、云服务、自动化、AI 工具，以及真实项目里值得留下的决策过程。文章优先解释为什么，再给出怎么做。</p>
+        <h2>内容如何保存</h2>
+        <p>文章以 Markdown 文件保存，主题与内容相互独立。网站由 Astro 构建为静态页面，通过 GitHub Pages 发布，不依赖数据库或自建服务器。</p>
+        <h2>写作原则</h2>
+        <p>能验证的事实写成事实；尚未验证的判断明确标记。尽量给出边界、失败路径和可复现的检查方法。</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about {
+    padding-top: clamp(4rem, 9vw, 8rem);
+  }
+
+  header p {
+    margin: 0;
+    color: var(--accent);
+    font: 500 0.66rem/1.4 var(--font-utility);
+    letter-spacing: 0.14em;
+  }
+
+  header h1 {
+    max-width: 60rem;
+    margin: 1.3rem 0 clamp(4rem, 9vw, 8rem);
+    font: 500 clamp(3rem, 7.5vw, 7rem)/1.1 var(--font-display);
+    letter-spacing: -0.05em;
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(10rem, 16rem) minmax(0, 43rem);
+    justify-content: center;
+    gap: clamp(3rem, 9vw, 8rem);
+  }
+
+  aside {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 0.5rem;
+    color: var(--text-faint);
+    font: 500 0.68rem/1.4 var(--font-utility);
+  }
+
+  aside strong {
+    color: var(--text);
+    font: 500 2rem/1.2 var(--font-display);
+  }
+
+  aside i {
+    width: 1px;
+    min-height: 8rem;
+    margin: 1.5rem 0 0 0.45rem;
+    background: linear-gradient(var(--accent), transparent);
+  }
+
+  @media (max-width: 680px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+
+    aside i {
+      width: 5rem;
+      height: 1px;
+      min-height: 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+  }
+</style>

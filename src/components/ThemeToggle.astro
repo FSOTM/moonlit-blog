@@ -1,0 +1,58 @@
+<button class="theme-toggle" type="button" aria-label="切换到深色模式">
+  <span class="theme-toggle__sun" aria-hidden="true">日</span>
+  <span class="theme-toggle__moon" aria-hidden="true">月</span>
+</button>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+
+  function updateLabel() {
+    if (!button) return;
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    button.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
+  }
+
+  button?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateLabel();
+  });
+
+  updateLabel();
+</script>
+
+<style>
+  .theme-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 3.7rem;
+    min-height: 2rem;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-raised);
+    color: var(--text-soft);
+    cursor: pointer;
+    padding: 0.18rem;
+    font: 500 0.68rem/1 var(--font-utility);
+  }
+
+  .theme-toggle span {
+    display: grid;
+    min-height: 1.48rem;
+    place-items: center;
+    border-radius: 999px;
+  }
+
+  :global(html[data-theme='light']) .theme-toggle__sun,
+  :global(html[data-theme='dark']) .theme-toggle__moon {
+    background: var(--text);
+    color: var(--surface);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>

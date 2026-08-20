@@ -1,0 +1,62 @@
+---
+import { SITE } from '../site';
+import { sitePath } from '../lib/urls';
+---
+
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div>
+      <strong>{SITE.title}</strong>
+      <span>© {new Date().getFullYear()} {SITE.author}</span>
+    </div>
+    <p>文字保存在 Markdown，页面构建于 Astro。</p>
+    <a href={sitePath('rss.xml')}>RSS</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(4rem, 9vw, 8rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    min-height: 7rem;
+    color: var(--text-faint);
+    font: 400 0.72rem/1.6 var(--font-utility);
+  }
+
+  .site-footer__inner div {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .site-footer strong {
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .site-footer a {
+    color: var(--text-soft);
+    text-underline-offset: 0.3em;
+  }
+
+  @media (max-width: 680px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr auto;
+      padding-block: 1.5rem;
+    }
+
+    .site-footer p {
+      display: none;
+    }
+  }
+</style>
