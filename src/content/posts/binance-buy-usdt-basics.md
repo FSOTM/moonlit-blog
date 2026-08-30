@@ -6,7 +6,7 @@ tags:
   - Crypto
   - 币安
   - 稳定币
-draft: true
+draft: false
 ---
 
 > 这篇是[从买币到 Wise 的完整出金链路](/moonlit-blog/posts/crypto-to-wise-route-in-progress/)中的第一篇基础分篇。

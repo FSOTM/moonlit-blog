@@ -111,18 +111,17 @@ Wise 已经注册并完成 KYC，但还没有完成首次入金，因此完整�
 | Wise | 注册和 KYC 已完成 | 仍缺 20 GBP 或等值货币首次入金 |
 | 端到端链路 | 尚未跑通 | 费用、时间和实际损耗都没有结论 |
 
-## 后面分别记录什么
+## 分篇记录
 
-总链路下面可以继续拆出这些独立文章：
+总链路下面已经拆出这些独立文章：
 
-- 买入 USDT / USDC 与买入平台选择。
-- 选链、提币和充值地址核对。
-- Kraken 英国区注册、KYC、换 GBP 与 FPS 出金。
-- Neverless 中国地区信息注册、换 EUR 与 SEPA 出金。
-- 国内地址证明与汇丰易存电子账单。
-- iFAST 注册、KYC、地址证明和收款账户。
-- Wise 的 20 GBP 或等值货币首次入金。
-- 全链路小额实测中的手续费、到账时间和汇率损耗。
+- [币安 C2C 买入、选链和 USDT 提币](/moonlit-blog/posts/binance-buy-usdt-basics/)。
+- [Kraken 英国区注册、USDT 充值、换 GBP 与 FPS 出金](/moonlit-blog/posts/kraken-gbp-fps-offramp/)。
+- [Neverless 中国地区资料注册、稳定币换 EUR 与 SEPA 出金](/moonlit-blog/posts/neverless-eur-sepa-offramp/)。
+- [国内地址证明与汇丰易存电子账单](/moonlit-blog/posts/china-proof-of-address-hsbc-yicun/)。
+- [iFAST 开户、两路法币承接、必要换汇和 Wise 首次入金](/moonlit-blog/posts/ifast-bank-bridge-to-wise/)。
+
+Wise 激活后的实际使用，以及全链路小额实测中的手续费、到账时间和汇率损耗，要等对应环节真正完成后再补。
 
 这些细节不需要全部挤在总览里，但总览必须把它们为什么存在写清楚。每个分篇解决一个条件，最后才能把整条链真正接起来。
 
