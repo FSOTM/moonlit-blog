@@ -185,6 +185,8 @@ Wise 已经注册并完成 KYC，但完整账户功能还没有激活。当前�
 
 计划使用同名 iFAST 银行账户，通过 GBP FPS 完成这笔首次入金。
 
+Wise 侧的证件选择、USD 居留核验、HKD 收款资料和首套账户资料条件，单独记录在[《Wise 最后一环：证件选择、USD 居留核验与首次入金》](/moonlit-blog/posts/wise-identity-usd-hkd-first-funding/)中。
+
 ### 先从 Wise 读取当次要求
 
 在 iFAST 发起转账前，需要从 Wise 当时的首次入金页面读取：

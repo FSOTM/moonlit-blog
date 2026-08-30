@@ -120,8 +120,9 @@ Wise 已经注册并完成 KYC，但还没有完成首次入金，因此完整�
 - [Neverless 中国地区资料注册、稳定币换 EUR 与 SEPA 出金](/moonlit-blog/posts/neverless-eur-sepa-offramp/)。
 - [国内地址证明与汇丰易存电子账单](/moonlit-blog/posts/china-proof-of-address-hsbc-yicun/)。
 - [iFAST 开户、两路法币承接、必要换汇和 Wise 首次入金](/moonlit-blog/posts/ifast-bank-bridge-to-wise/)。
+- [Wise 证件选择、USD 居留核验、HKD 收款资料和首次入金](/moonlit-blog/posts/wise-identity-usd-hkd-first-funding/)。
 
-Wise 激活后的实际使用，以及全链路小额实测中的手续费、到账时间和汇率损耗，要等对应环节真正完成后再补。
+Wise 激活后的长期使用，以及全链路小额实测中的手续费、到账时间和汇率损耗，要等对应环节真正完成后再补。
 
 这些细节不需要全部挤在总览里，但总览必须把它们为什么存在写清楚。每个分篇解决一个条件，最后才能把整条链真正接起来。
 
